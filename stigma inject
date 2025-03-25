@@ -104,7 +104,7 @@ TextLabel_2.Position = UDim2.new(0, 0, 0.482, 0)
 TextLabel_2.Size = UDim2.new(0, 325, 0, 42)
 TextLabel_2.Font = Enum.Font.Gotham
 TextLabel_2.Text = "Attached to Client, Enjoy!"
-TextLabel_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_2.TextColor3 = Color3.fromRGB(0, 0, 0)
 TextLabel_2.TextSize = 24.000
 
 UICorner.Parent = Frame
@@ -126,5 +126,3 @@ local function AnimateFrame()
 end
 
 coroutine.wrap(AnimateFrame)()
-
-print("[supQ]: Attached to Client! Enjoy using supAPI (Nezur) | https://discord.com/invite/BbhUSYPXNH")
