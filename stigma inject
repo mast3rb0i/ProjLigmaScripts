@@ -1,0 +1,59 @@
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local SpinningStigma = Instance.new("ScreenGui")
+local ImageLabel = Instance.new("ImageLabel")
+
+--Properties:
+
+SpinningStigma.Name = "SpinningStigma"
+SpinningStigma.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+SpinningStigma.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+ImageLabel.Parent = SpinningStigma
+ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ImageLabel.BackgroundTransparency = 1.000
+ImageLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ImageLabel.BorderSizePixel = 0
+ImageLabel.Position = UDim2.new(0.0298295449, 0, 0.817839205, 0)
+ImageLabel.Size = UDim2.new(0, 100, 0, 100)
+ImageLabel.Image = "http://www.roblox.com/asset/?id=90264708888633"
+
+-- Scripts:
+
+local function JQWIDQ_fake_script() -- ImageLabel.LocalScript 
+	local script = Instance.new('LocalScript', ImageLabel)
+
+	local TweenService = game:GetService("TweenService")
+	local image = script.Parent
+	
+	if image then
+		-- Ensure the image starts at the exact center of the screen
+		image.Position = UDim2.new(0.5, -image.Size.X.Offset / 2, 0.5, -image.Size.Y.Offset / 2)
+	
+		-- Wait 2 seconds before moving
+		wait(1)
+	
+		-- Tween to move towards the bottom-left
+		local moveInfo = TweenInfo.new(1.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out) -- 1.5 seconds smooth movement
+		local moveGoal = {Position = UDim2.new(0, 50, 1, -50)} -- Moves to bottom-left
+		local moveTween = TweenService:Create(image, moveInfo, moveGoal)
+	
+		-- Tween to rotate infinitely
+		local rotateInfo = TweenInfo.new(5, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, -1) -- Infinite loop
+		local rotateGoal = {Rotation = 360}
+		local rotateTween = TweenService:Create(image, rotateInfo, rotateGoal)
+	
+		-- Start moving first, then start spinning
+		moveTween:Play()
+		moveTween.Completed:Connect(function() -- Once move finishes, start spinning
+			rotateTween:Play()
+		end)
+	else
+		warn("ImageLabel not found! Check your GUI setup.")
+	end
+	
+end
+coroutine.wrap(JQWIDQ_fake_script)()
