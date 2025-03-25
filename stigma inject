@@ -38,7 +38,7 @@ local function JQWIDQ_fake_script() -- ImageLabel.LocalScript
 	
 		-- Tween to move towards the bottom-left
 		local moveInfo = TweenInfo.new(1.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out) -- 1.5 seconds smooth movement
-		local moveGoal = {Position = UDim2.new(0, 50, 1, -50)} -- Moves to bottom-left
+		local moveGoal = {Position = UDim2.new(0, 50, 1, -150)} -- Moves to bottom-left
 		local moveTween = TweenService:Create(image, moveInfo, moveGoal)
 	
 		-- Tween to rotate infinitely
